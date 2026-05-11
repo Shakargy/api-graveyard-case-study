@@ -51,17 +51,17 @@ Auto-built from the SDK stream. Lines are weighted by 24h call volume; color sig
 
 ![Dependency graph](assets/02-dependency-graph.png)
 
-### Risk event — breaking change detected
+### Risk events
 
-A vendor changelog flagged a breaking change on an endpoint you actively call. This is the screen the release engineer lands on.
+Detected changes and potential API issues — new dependencies, breaking changes, and error spikes, each with severity and one-click task creation.
 
-![Risk event detail](assets/03-risk-event.png)
+![Risk events](assets/03-risk-events.png)
 
-### Zombie APIs
+### Dependencies
 
-Endpoints that have gone quiet. Each row has its last-seen timestamp and the last service that called it.
+Every external API discovered from live traffic, with approval status, risk score, request volume, and last-seen timestamp.
 
-![Zombie APIs](assets/04-zombies.png)
+![Dependencies](assets/04-dependencies.png)
 
 ---
 
