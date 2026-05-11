@@ -43,25 +43,25 @@ API Graveyard fixes all three.
 
 The first thing you see after sign-in. Health at a glance, then the table you actually scan first thing in the morning.
 
-![Dashboard overview](assets/01-dashboard.svg)
+![Dashboard overview](assets/01-dashboard.png)
 
 ### Dependency graph
 
 Auto-built from the SDK stream. Lines are weighted by 24h call volume; color signals current risk.
 
-![Dependency graph](assets/02-dependency-graph.svg)
+![Dependency graph](assets/02-dependency-graph.png)
 
 ### Risk event — breaking change detected
 
 A vendor changelog flagged a breaking change on an endpoint you actively call. This is the screen the release engineer lands on.
 
-![Risk event detail](assets/03-risk-event.svg)
+![Risk event detail](assets/03-risk-event.png)
 
 ### Zombie APIs
 
 Endpoints that have gone quiet. Each row has its last-seen timestamp and the last service that called it.
 
-![Zombie APIs](assets/04-zombies.svg)
+![Zombie APIs](assets/04-zombies.png)
 
 ---
 
