@@ -30,8 +30,38 @@ API Graveyard fixes all three.
 ## Live
 
 - **Product:** [api-graveyard.com](https://api-graveyard.com)
+- **Public Dashboard:** [api-graveyard.com/api-health](https://api-graveyard.com/api-health) — live, no login required
 - **SDKs (public):** [Python](https://github.com/Shakargy/api-graveyard-python) · [Go](https://github.com/Shakargy/api-graveyard-go) · [Node.js](https://github.com/Shakargy/api-graveyard-node)
 - **Case study:** you're reading it
+
+---
+
+## Public API Health Dashboard
+
+> **See it live:** [api-graveyard.com/api-health](https://api-graveyard.com/api-health)
+
+A public-facing dashboard that monitors 15 real API changelogs and displays live health status — no login required. This is the same detection engine that powers the full product, running against real vendor data in production.
+
+### What it monitors
+
+| API | Source type |
+|-----|-----------|
+| Stripe, OpenAI, Twilio, Auth0, Slack, Shopify, Cloudflare, Vercel, Supabase, Notion, HubSpot | Changelog |
+| SendGrid, Firebase, Datadog | Documentation / Release notes |
+| GitHub | Blog changelog |
+
+### How it works
+
+1. **Celery Beat** dispatches fetch jobs every 6 hours for each monitored source
+2. **Worker** fetches the changelog URL, extracts text, and computes a content hash
+3. **Diff engine** compares against the previous snapshot — if the hash changed, it generates a diff
+4. **Severity classifier** scans the diff for keywords (`breaking change`, `deprecated`, `removed`, `security`, `end of life`) and assigns a risk level
+5. **Risk events** are created and surfaced on the dashboard with severity, timestamp, and source attribution
+6. **Public API** serves the data through three unauthenticated read-only endpoints (`/sources`, `/events`, `/stats`)
+
+### Why this matters
+
+This dashboard generates its own case study data over time. After a few weeks of monitoring, we can show real numbers: which APIs change most frequently, what kinds of changes are most common, and how quickly breaking changes get detected. It's a live proof-of-concept that runs 24/7 without any manual intervention.
 
 ---
 
